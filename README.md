@@ -10,9 +10,9 @@ Core value:
 flexblity, simplicity, speedy = beauty
 
 Features
-
 - flex grid 
 - Simple media queries - allow to use inside the stylesheets to keep html5 clean
 - CSS3 mixins
+- UI components
 
 ```
