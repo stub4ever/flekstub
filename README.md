@@ -1,4 +1,4 @@
-###  Flekstub - A Flex UI Semantic web framework for designers & developers
+###  Flekstub - A Flex CSS modern web framework for designers & developers
 
 I am currently working on this project to improve my skills in front-end development. And I would like to share the code with everyone in the world. Please feel free to send me an message if you are interest or have any questions:). 
 
