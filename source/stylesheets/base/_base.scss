@@ -1,3 +1,5 @@
-body {
-  font-family: 'Ubuntu', sans-serif;
-}
+@charset "UTF-8";
+
+// Responsive images
+img { max-width: 100%; }
+.no-js .responsive-image { display: none; }
