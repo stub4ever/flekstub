@@ -1,38 +1,42 @@
-@import "base/_normalize";
-@import "base/_base";
+@import "config/_variables";
+@import "helpers/helpers";
+@import "base/base";
+@import "vendor/vendor";
+@import "config/_bourbon-vars";
+@import "elements/elements";
+@import "components/components";
+@import "layout/layout";
 
-@import "helpers/_functions";
-@import "helpers/_mixins";
-@import "helpers/_variables";
-@import "layout/_grid";
 
 
-.grid {
-  @include container(100%, 20px, 20px)
-  @include flex-align(center, null);
-  @include grid-row;
-  background-color: black;
-  color: white;
-}
-
-.grid-row {
-  @include grid-cell(1);
-  @include flex;
-  flex: 0 0 300px;
-  max-width: 300px;
-  .grid-item-1 {
-    @include grid-cell(4);
-    @include flex-align(center);
-    @include flex-order(1);
-    font-size: font-px(16);
-    border: solid 1px white;
+section {
+  @include outer-container(100%);
+  display: flex;
+  height: 100px;
+  @include media($mobile){
+    height: 100%;
   }
-  .grid-item-2 {
-    @include grid-cell(1);
-    @include flex-align(center);
-    @include flex-order(2);
-    font-size: font-px(16);
-    border: solid 1px white;
+  aside {
+    @include span-columns(9);
+    @include shift(2 of 6);
+    @include omega(4n);
+    @include flex-align(center, center);
+    border: 1px solid black;
+    text-align: center;
+    @include media($mobile) {
+      @include span-columns(6);
+      @include shift(0);
+    }
+  }
+  article {
+    @include span-columns(3);
+    @include omega;
+    @include flex-align(center, center);
+    border: 1px solid black;
+    text-align: center;
+     @include media($mobile) {
+      @include span-columns(6);
+      @include shift(0);
+    }
   }
 }
-

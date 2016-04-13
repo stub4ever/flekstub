@@ -1,4 +1,4 @@
-/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
  * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
@@ -72,14 +72,10 @@ template,
 /* Links
    ========================================================================== */
 /**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ * Remove the gray background on active links in IE 10.
  */
 a {
-  background-color: transparent;
-  /* 1 */
-  -webkit-text-decoration-skip: objects;
-  /* 2 */ }
+  background-color: transparent; }
 
 /**
  * Remove the outline on focused links when they are also active or hovered
@@ -211,17 +207,13 @@ hr {
 /* Forms
    ========================================================================== */
 /**
- * 1. Change font properties to `inherit` in all browsers (opinionated).
- * 2. Remove the margin in Firefox and Safari.
+ * Change font properties to `inherit` in all browsers (opinionated).
  */
 button,
 input,
 select,
 textarea {
-  font: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */ }
+  font: inherit; }
 
 /**
  * Restore the font weight unset by the previous rule.
@@ -232,15 +224,28 @@ optgroup {
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
+ * 2. Show the overflow in Edge, Firefox, and IE.
  */
 button,
-input {
-  /* 1 */
+input,
+select {
+  /* 2 */
   overflow: visible; }
 
 /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
+ * Remove the margin in Safari.
+ * 1. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+select,
+textarea {
+  /* 1 */
+  margin: 0; }
+
+/**
+ * Remove the inheritence of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritence of text transform in Firefox.
  */
 button,
 select {
@@ -248,9 +253,24 @@ select {
   text-transform: none; }
 
 /**
+ * Change the cursor in all browsers (opinionated).
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer; }
+
+/**
+ * Restore the default cursor to disabled elements unset by the previous rule.
+ */
+[disabled] {
+  cursor: default; }
+
+/**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Correct the inability to style clickable types in iOS.
  */
 button,
 html [type="button"],
@@ -263,19 +283,15 @@ html [type="button"],
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
+input::-moz-focus-inner {
+  border: 0;
   padding: 0; }
 
 /**
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+input:-moz-focusring {
   outline: 1px dotted ButtonText; }
 
 /**
@@ -331,58 +347,18 @@ textarea {
   height: auto; }
 
 /**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
+ * Correct the odd appearance of search inputs in Chrome and Safari.
  */
 [type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */ }
+  -webkit-appearance: textfield; }
 
 /**
- * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ * Remove the inner padding and cancel buttons in Chrome on OS X and
+ * Safari on OS X.
  */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
-
-/**
- * Correct the text style of placeholders in Chrome, Edge, and Safari.
- */
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 0.54; }
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */ }
-
-html {
-  text-rendering: optimizeLegibility; }
-
-html *, html *::after, html *::before {
-  box-sizing: border-box; }
-
-/**
- * Fixes the min-height bug in IE10-11.
- * This class should be added to a container element as described in
- * Flexbug #3. See http://bit.ly/1gy8OJS for details.
- */
-.u-ieMinHeightBugFix {
-  -js-display: flex;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column; }
 
 img {
   max-width: 100%; }
@@ -390,87 +366,90 @@ img {
 .no-js .responsive-image {
   display: none; }
 
-html {
-  box-sizing: border-box; }
+.grid::before, .grid::after {
+  content: " ";
+  display: table;
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+  -webkit-order: 1;
+      -ms-flex-order: 1;
+          order: 1; }
 
-*, *::after, *::before {
-  box-sizing: inherit; }
+.grid:after {
+  clear: both; }
 
-section {
+/* Used to convert PX to EMs for multiple properties or values or both.
+$base is an optional measurement that allows making measurements relative to the parent font size rather than the current. Also accepts a list of lists (instead a list of values) for properties that accept multiple lists of values. Only numbers of converted; everything else is passed through.
+Examples:
+@include scale(line-height, 30)
+@include scale(line-height, 30, 16)
+@include scale(width height, 125);
+@include scale(padding, 0 25, 16);
+@include scale(text-shadow, (#0d6e28 1 1) (#777 0 0 2), 16);
+@include scale(box-shadow, (inset 0 0 0 1 #2a9022) (inset 0 0 3 #459966), 16);
+*/
+.grid {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  -js-display: flex;
+  padding: 20px;
+  margin: 20px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 100px; }
-  section::after {
-    clear: both;
-    content: "";
-    display: table; }
-  @media screen and (max-width: 500px) {
-    section {
-      height: 100%; } }
-  section aside {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 74.41059%;
-    margin-left: 34.94305%;
-    -js-display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizespeed;
+  background-color: black;
+  color: white; }
+
+.grid-row {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 300px;
+      -ms-flex: 0 0 300px;
+          flex: 0 0 300px;
+  max-width: 300px; }
+  .grid-row .grid-item-1 {
+    -webkit-flex: 4;
+        -ms-flex: 4;
+            flex: 4;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+    font-size: 1em;
+    border: solid 1px white; }
+  .grid-row .grid-item-2 {
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border: 1px solid black;
-    text-align: center; }
-    section aside:last-child {
-      margin-right: 0; }
-    section aside:nth-child(4n) {
-      margin-right: 0; }
-    section aside:nth-child(4n+1) {
-      clear: left; }
-    @media screen and (max-width: 500px) {
-      section aside {
-        float: left;
-        display: block;
-        margin-right: 4.82916%;
-        width: 100%;
-        margin-left: 0%; }
-        section aside:last-child {
-          margin-right: 0; } }
-  section article {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%;
-    margin-right: 0;
-    -js-display: flex;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border: 1px solid black;
-    text-align: center; }
-    section article:last-child {
-      margin-right: 0; }
-    @media screen and (max-width: 500px) {
-      section article {
-        float: left;
-        display: block;
-        margin-right: 4.82916%;
-        width: 100%;
-        margin-left: 0%; }
-        section article:last-child {
-          margin-right: 0; } }
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+    font-size: 1em; }

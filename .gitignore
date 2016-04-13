@@ -45,20 +45,6 @@ out/
 # dist/
 tmp/
 
-# layouts
-source/layouts/
-source/index.html.slim
-
-# middleman
-config.rb
-config.ru
-Gemfile
-Gemfile.lock
-
-#gulp
-gulpfile.js
-package.json
-
 
 
 

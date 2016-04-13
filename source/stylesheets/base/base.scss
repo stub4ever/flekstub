@@ -1,0 +1,7 @@
+@import "_global";
+
+
+html {
+  @extend %border-box-on-every-element;
+  @extend %optimize-rendering-text;
+}
